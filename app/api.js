@@ -1,0 +1,1 @@
+export const GIT_AUTH_LOGIN = "https://github.com/login/oauth/authorize?client_id=fb65c7ad7034662c1b3e&scope=read:user%20public_repo"
