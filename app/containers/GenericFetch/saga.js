@@ -18,7 +18,10 @@ export function* fetchGeneric({
 }) {
     yield put(fetchGenericStart(namespace, key));
     try {
+        console.log(url)
         const response = yield call(request, url);
+        console.log('after')
+        console.log(response)
         yield put(fetchGenericSuccess(namespace, key, responseHandler(response)));
     } catch (error) {
         yield put(fetchGenericFailure(namespace, key, error));

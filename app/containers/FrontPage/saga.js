@@ -2,16 +2,24 @@
 import { takeLatest } from 'redux-saga/effects';
 import { fetchGeneric } from '../GenericFetch/saga';
 
-import { GIT_ISSUES, GIT_ISSUES_NAMESPACE } from './constants';
+import { FETCH_REPOS, GIT_NAMESPACE } from './constants';
 
-function* fetchIssues() {
-    const gitUrl = 'https://api.github.com/repos/1dv023/jh222nf-examination-3/issues'
+const responseHandler = async (response) => {
+    const data = await JSON.parse(response.text)
+    console.log(data, 'lkfmvrj')
+    return data
+}
+
+function* fetchIssues () {
+    const gitUrl = 'http://localhost:3003/repos'
     yield fetchGeneric({
-        namespace: GIT_ISSUES_NAMESPACE,
+        namespace: GIT_NAMESPACE,
         url: gitUrl,
+        key: 'repos',
+        responseHandler
     });
 }
 
 export default function* rootSaga() {
-    yield takeLatest(GIT_ISSUES, fetchIssues);
+    yield takeLatest(FETCH_REPOS, fetchIssues);
 }

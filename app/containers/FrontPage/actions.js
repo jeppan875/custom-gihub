@@ -1,7 +1,7 @@
-import { GIT_ISSUES } from './constants';
+import { FETCH_REPOS } from './constants';
 
-export function fetchIssues() {
+export function fetchRepos() {
     return {
-        type: GIT_ISSUES,
+        type: FETCH_REPOS,
     };
 }

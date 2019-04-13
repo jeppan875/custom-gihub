@@ -31,6 +31,20 @@ app
       const queryParams = { id: req.params.id }
       app.render(req, res, actualPage, queryParams)
     })
+    server.get('/repos', (req, res) => {
+      const accessToken = req.session.accessToken
+      const user = req.session.user.login
+      superagent
+        .get(`https://api.github.com/users/${user}/repos`)
+        .set('Authorization', `token ${accessToken}`)
+        .set('accept', 'application/json')
+        .then(resul => {
+          console.log(resul.body)
+          res.send(resul)
+        }).catch(err => {
+          console.log(err)
+        });
+    })
     server.get('/loginredirect', async (req, res) => {
       const clientID = process.env.GITHUB_CLIENTID
       const clientSecret = process.env.GITHUB_CLIEN_SECRET
