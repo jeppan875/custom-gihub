@@ -19,13 +19,13 @@ import GlobalStyles from 'app/globalStyle';
 
 class MyApp extends App {
 
-    static async getInitialProps({ Component, ctx, isServer }) {
+    static async getInitialProps({ Component, ctx }) {
 
         // we can dispatch from here too
         const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
-        let user
+
         if (ctx.req && pageProps.store) {
-            user = ctx.req.session.user
+            let user = ctx.req.session.user
             user ? pageProps.store.dispatch(gitLogin({ user })) : null
         }
 
@@ -35,7 +35,6 @@ class MyApp extends App {
 
     render() {
         const { Component, pageProps, store } = this.props;
-
         return (
             <Container>
                 <Provider store={store}>

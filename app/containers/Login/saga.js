@@ -9,7 +9,6 @@ import { call, put } from 'redux-saga/effects';
 import { GIT_LOGIN, GIT_NAMESPACE, GIT_LOGOUT } from './constants';
 
 function* gitLogin({ user }) {
-    console.log('login saga', user)
     yield put(fetchGenericSuccess(
         GIT_NAMESPACE,
         'user',

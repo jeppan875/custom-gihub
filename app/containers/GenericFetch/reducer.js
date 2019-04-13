@@ -34,8 +34,6 @@ export default createReducer(initialState, {
         let nextData = data;
 
         // Merge current and next results arrays
-        console.log('redddduccccerrrr')
-        console.log(nextData)
         if (
             nextData != null &&
             Array.isArray(nextData.results) &&

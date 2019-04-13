@@ -60,7 +60,7 @@ app
               const { login, avatar_url } = resul.body
               const user = { login, avatar_url }
               req.session.user = user
-              app.render(req, res, '/')
+              res.redirect('/')
             }).catch(err => {
               console.log(err)
             });
