@@ -24,7 +24,7 @@ class MyApp extends App {
         // we can dispatch from here too
         const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
         let user
-        if (ctx.req) {
+        if (ctx.req && pageProps.store) {
             user = ctx.req.session.user
             user ? pageProps.store.dispatch(gitLogin({ user })) : null
         }

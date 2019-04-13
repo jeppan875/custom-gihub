@@ -19,12 +19,21 @@ const StyledLink = styled.a`
   text-decoration: none;
   float: left;
 `;
+
+const Avatar = styled.img`
+  float: left;
+  height: 60px;
+  cursor: pointer;
+  margin: 5px;
+`;
 function Header(props) {
   const { user, gitlogout } = props
+  const welcomeText = user ? user.login : 'Custom Github'
   return (
     <HeadearDiv>
+      {user && <Avatar src={user.avatar_url} />}
       <Link href="/" passHref>
-        <StyledLink >Custom Github</StyledLink>
+        <StyledLink >{welcomeText}</StyledLink>
       </Link>
       {user ? <LogoutButton logout={gitlogout} /> :
         <LoginButton />}

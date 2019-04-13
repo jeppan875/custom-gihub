@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { gitLogin, gitLogout } from './actions'
 import { connect } from 'react-redux';
 import { getGitUser } from './selector'
+
 const mapDispatchToProps = (dispatch) => {
     return {
         gitLogin: () => dispatch(gitLogin()),
@@ -15,8 +16,8 @@ const mapStateToProps = (state) => {
 }
 const Login = Comp => {
     class Login extends Component {
-
         render() {
+            console.log('rerender')
             return (
                 <Comp {...this.props} />
             )

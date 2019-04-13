@@ -3,6 +3,7 @@ import Login from 'containers/Login'
 
 function Layout(props) {
   const { children, user, gitLogout } = props;
+  console.log(children)
   return (
     <div >
       <Header user={user} gitlogout={gitLogout} />
