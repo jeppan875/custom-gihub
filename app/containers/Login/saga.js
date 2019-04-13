@@ -4,7 +4,7 @@ import {
     fetchGenericSuccess,
     resetGeneric
 } from '../GenericFetch/actions';
-import { call, put } from 'redux-saga/effects';
+import { put } from 'redux-saga/effects';
 
 import { GIT_LOGIN, GIT_NAMESPACE, GIT_LOGOUT } from './constants';
 
