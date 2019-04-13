@@ -39,7 +39,6 @@ app
         .set('Authorization', `token ${accessToken}`)
         .set('accept', 'application/json')
         .then(resul => {
-          console.log(resul.body)
           res.send(resul)
         }).catch(err => {
           console.log(err)
