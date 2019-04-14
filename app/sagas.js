@@ -1,4 +1,4 @@
-import frontpageSaga from './containers/Frontpage/saga';
+import frontpageSaga from './containers/Repos/saga';
 import loginSaga from './containers/Login/saga';
 import { all, fork } from 'redux-saga/effects';
 

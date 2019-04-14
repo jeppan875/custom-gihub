@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { fetchRepos } from './actions'
+import Repos from 'containers/Repos'
 
 class FrontPage extends Component {
     static async getInitialProps({ store }) {
         console.log(store)
-        store.dispatch(fetchRepos())
         return { store }
     }
     render() {
@@ -13,6 +12,7 @@ class FrontPage extends Component {
         return (
             <div>
                 <p>logged in</p>
+                <Repos></Repos>
             </div>
         )
     }
