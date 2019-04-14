@@ -11,7 +11,6 @@ const initialState = Immutable({
 
 export default createReducer(initialState, {
     [GIT_LOGIN_ACTION](state, { key, data }) {
-        console.log(data)
         return state.setIn([key], data)
     },
     [GIT_LOGOUT_ACTION]() {

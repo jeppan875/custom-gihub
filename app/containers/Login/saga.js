@@ -3,10 +3,11 @@ import {
     gitLogoutAction
 } from './actions';
 import { gitLoginAction } from './actions';
-import { call, put } from 'redux-saga/effects';
+import { put } from 'redux-saga/effects';
 import { GIT_LOGIN_SAGA, GIT_LOGOUT_SAGA } from './constants';
-import { request } from 'utils/request';
+import { resetReposAction } from 'containers/Repos/actions'
 import 'isomorphic-fetch';
+
 function* gitLogin({ user }) {
     yield put(gitLoginAction({
         key: 'user',
@@ -15,9 +16,9 @@ function* gitLogin({ user }) {
 }
 
 function* gitLogout() {
-    console.log('saga')
     yield fetch(`http://localhost:3003/logout`);
     yield put(gitLogoutAction())
+    yield put(resetReposAction())
 }
 
 export default function* rootSaga() {

@@ -8,7 +8,6 @@ export function gitLoginAction({ key, data }) {
     };
 }
 export function gitLogoutAction() {
-    console.log('action')
     return {
         type: GIT_LOGOUT_ACTION,
     };

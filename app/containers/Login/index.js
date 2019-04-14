@@ -16,7 +16,6 @@ const mapStateToProps = (state) => {
 const Login = Comp => {
     class Login extends Component {
         render() {
-            console.log(this.props, 'login')
             return (
                 <Comp {...this.props} />
             )

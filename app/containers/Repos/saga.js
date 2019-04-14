@@ -6,11 +6,9 @@ import { FETCH_REPOS_SAGA, GIT_NAMESPACE } from './constants';
 import { call, put } from 'redux-saga/effects';
 
 function* fetchRepos() {
-    console.log('saga')
     const url = 'http://localhost:3003/repos'
     const response = yield call(request, url);
     const repos = yield JSON.parse(response.text)
-    console.log(repos)
     yield put(insertReposAction({
         key: 'repos',
         data: repos
