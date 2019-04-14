@@ -44,7 +44,7 @@ app
           console.log(err)
         });
     })
-    server.get('/loginredirect', async (req, res) => {
+    server.get('/user/login/redirect', async (req, res) => {
       const clientID = process.env.GITHUB_CLIENTID
       const clientSecret = process.env.GITHUB_CLIEN_SECRET
       const { query: { code } } = req
