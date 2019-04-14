@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { gitLogin, gitLogout } from './actions'
 import { connect } from 'react-redux';
 import { getGitUser } from './selector'
-import { fetchRepos } from './actions'
 
 const mapDispatchToProps = (dispatch) => {
     return {
