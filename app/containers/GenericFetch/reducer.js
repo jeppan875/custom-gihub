@@ -30,6 +30,7 @@ export default createReducer(initialState, {
     },
 
     [FETCH_GENERIC_SUCCESS](state, { model, key, data }) {
+        console.log('reducer')
         let currentData = state.getIn([model, key], {});
         let nextData = data;
 

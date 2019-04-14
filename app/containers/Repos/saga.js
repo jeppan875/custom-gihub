@@ -1,22 +1,22 @@
 
 import { takeLatest } from 'redux-saga/effects';
-import { fetchGenericSuccess } from '../GenericFetch/actions';
+import { insertReposAction } from './actions';
 import { request } from 'utils/request';
-import { FETCH_REPOS, GIT_NAMESPACE } from './constants';
+import { FETCH_REPOS_SAGA, GIT_NAMESPACE } from './constants';
 import { call, put } from 'redux-saga/effects';
 
 function* fetchRepos() {
+    console.log('saga')
     const url = 'http://localhost:3003/repos'
     const response = yield call(request, url);
     const repos = yield JSON.parse(response.text)
     console.log(repos)
-    yield put(fetchGenericSuccess(
-        GIT_NAMESPACE,
-        'repos',
-        repos
-    ));
+    yield put(insertReposAction({
+        key: 'repos',
+        data: repos
+    }));
 }
 
 export default function* rootSaga() {
-    yield takeLatest(FETCH_REPOS, fetchRepos);
+    yield takeLatest(FETCH_REPOS_SAGA, fetchRepos);
 }

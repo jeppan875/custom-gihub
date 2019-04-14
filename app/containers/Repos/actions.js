@@ -1,7 +1,9 @@
-import { FETCH_REPOS } from './constants';
+import { INSERT_REPOS_ACTION } from './constants';
 
-export function fetchRepos() {
-    return {
-        type: FETCH_REPOS,
-    };
-}
+export const insertReposAction = ({ key, data }) => {
+    return ({
+        type: INSERT_REPOS_ACTION,
+        data,
+        key,
+    })
+};
