@@ -30,7 +30,3 @@ export const updateGenericCache = url => ({
     type: UPDATE_GENERIC_CACHE,
     url,
 });
-
-export const resetGeneric = () => ({
-    type: RESET_GENERIC,
-});

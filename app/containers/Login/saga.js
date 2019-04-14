@@ -1,30 +1,26 @@
 import { takeLatest } from 'redux-saga/effects';
-import { fetchGeneric } from '../GenericFetch/saga';
 import {
-    fetchGenericSuccess,
-    resetGeneric
-} from '../GenericFetch/actions';
-import { put } from 'redux-saga/effects';
-
-import { GIT_LOGIN, GIT_NAMESPACE, GIT_LOGOUT } from './constants';
-
+    gitLogoutAction
+} from './actions';
+import { gitLoginAction } from './actions';
+import { call, put } from 'redux-saga/effects';
+import { GIT_LOGIN_SAGA, GIT_LOGOUT_SAGA } from './constants';
+import { request } from 'utils/request';
+import 'isomorphic-fetch';
 function* gitLogin({ user }) {
-    yield put(fetchGenericSuccess(
-        GIT_NAMESPACE,
-        'user',
-        user,
-    ));
+    yield put(gitLoginAction({
+        key: 'user',
+        data: user
+    }));
 }
 
 function* gitLogout() {
-    yield fetchGeneric({
-        namespace: GIT_NAMESPACE,
-        url: `http://localhost:3003/logout`,
-    });
-    yield put(resetGeneric())
+    console.log('saga')
+    yield fetch(`http://localhost:3003/logout`);
+    yield put(gitLogoutAction())
 }
 
 export default function* rootSaga() {
-    yield takeLatest(GIT_LOGIN, gitLogin);
-    yield takeLatest(GIT_LOGOUT, gitLogout);
+    yield takeLatest(GIT_LOGIN_SAGA, gitLogin);
+    yield takeLatest(GIT_LOGOUT_SAGA, gitLogout);
 }

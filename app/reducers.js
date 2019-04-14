@@ -2,13 +2,14 @@ import { combineReducers } from 'redux';
 
 import genericReducer from './containers/GenericFetch/reducer';
 import socketReducer from './websocket/reducer';
-import reposReducer from './containers/Repos/reducer';
+import gitReducer from './containers/reducer';
+import loginReducer from './containers/Login/reducer';
 
 export default () => {
     const rootReducer = combineReducers({
         generic: genericReducer,
         updates: socketReducer,
-        github: reposReducer
+        github: gitReducer
     });
 
     return rootReducer;

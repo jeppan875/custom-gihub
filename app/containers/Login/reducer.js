@@ -2,16 +2,19 @@ import Immutable from 'seamless-immutable';
 import createReducer from '@ikhsaan/create-reducer';
 
 import {
-    INSERT_REPOS_ACTION
+    GIT_LOGIN_ACTION, GIT_LOGOUT_ACTION
 } from './constants';
 
 const initialState = Immutable({
-    repos: [],
+    user: null,
 });
 
 export default createReducer(initialState, {
-    [INSERT_REPOS_ACTION](state, { key, data }) {
+    [GIT_LOGIN_ACTION](state, { key, data }) {
         console.log(data)
         return state.setIn([key], data)
+    },
+    [GIT_LOGOUT_ACTION]() {
+        return initialState
     }
 })

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { gitLogin, gitLogout } from './actions'
+import { GIT_LOGOUT_SAGA } from './constants'
 import { connect } from 'react-redux';
 import { getGitUser } from './selector'
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        gitLogin: () => dispatch(gitLogin()),
-        gitLogout: () => dispatch(gitLogout()),
+        gitLogout: () => dispatch({ type: GIT_LOGOUT_SAGA }),
     }
 }
 const mapStateToProps = (state) => {
@@ -17,6 +16,7 @@ const mapStateToProps = (state) => {
 const Login = Comp => {
     class Login extends Component {
         render() {
+            console.log(this.props, 'login')
             return (
                 <Comp {...this.props} />
             )

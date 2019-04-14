@@ -1,3 +1,5 @@
-export const GIT_LOGIN = 'LOGIN/START_LOGIN';
-export const GIT_LOGOUT = 'LOGOUT/START_LOGOUT';
+export const GIT_LOGIN_SAGA = 'LOGIN/START_SAGA';
+export const GIT_LOGIN_ACTION = 'LOGIN/START_ACTION';
+export const GIT_LOGOUT_SAGA = 'LOGOUT/START_SAGA';
+export const GIT_LOGOUT_ACTION = 'LOGOUT/START_ACTION';
 export const GIT_NAMESPACE = 'github';

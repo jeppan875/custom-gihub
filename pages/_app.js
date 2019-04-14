@@ -6,7 +6,7 @@ import withRedux from "next-redux-wrapper";
 import withReduxSaga from 'next-redux-saga';
 import createStore from '../app/store';
 import Layout from 'components/Layout'
-import { gitLogin } from 'containers/Login/actions'
+import { GIT_LOGIN_SAGA } from 'containers/Login/constants'
 import GlobalStyles from 'app/globalStyle';
 /**
 * @param {object} initialState
@@ -26,7 +26,7 @@ class MyApp extends App {
 
         if (ctx.req && pageProps.store) {
             let user = ctx.req.session.user
-            user ? pageProps.store.dispatch(gitLogin({ user })) : null
+            pageProps.store.dispatch({ type: GIT_LOGIN_SAGA, user })
         }
 
         return { pageProps };

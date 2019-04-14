@@ -1,5 +1,5 @@
-export const getGitUser = (state, name) => {
-    if (state.generic.github && state.generic.github.user) { return state.generic.github.user } else {
+export const getGitUser = state => {
+    if (state.github.user && state.github.user.user) { return state.github.user.user } else {
         return null
     }
 }
