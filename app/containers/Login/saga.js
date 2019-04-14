@@ -16,7 +16,7 @@ function* gitLogin({ user }) {
 }
 
 function* gitLogout() {
-    yield fetch(`http://localhost:3003/logout`);
+    yield fetch(`http://localhost:3003/user/logout`);
     yield put(gitLogoutAction())
     yield put(resetReposAction())
 }

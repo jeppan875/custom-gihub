@@ -1,7 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const userController = require('../controller/user')
+const { login, logout } = require('../controller/user')
 
-router.get('/logout', userController.navigateToRegister)
+router.get('/logout', logout)
 
-router.get('/login/redirect', userController.navigateToLogin)
+router.get('/login/redirect', login)
+
+module.exports = router
