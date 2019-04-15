@@ -6,7 +6,7 @@ import { FETCH_REPOS_SAGA, FETCH_SINGLE_REPO_SAGA } from './constants';
 import { call, put } from 'redux-saga/effects';
 
 function* fetchRepos() {
-    const url = 'http://localhost:3003/repos'
+    const url = 'http://localhost:3003/repos/repos'
     const response = yield call(request, url);
     const repos = yield JSON.parse(response.text)
     yield put(insertReposAction({
