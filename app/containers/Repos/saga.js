@@ -2,7 +2,7 @@
 import { takeLatest } from 'redux-saga/effects';
 import { insertReposAction } from './actions';
 import { request } from 'utils/request';
-import { FETCH_REPOS_SAGA, GIT_NAMESPACE } from './constants';
+import { FETCH_REPOS_SAGA, FETCH_SINGLE_REPO_SAGA } from './constants';
 import { call, put } from 'redux-saga/effects';
 
 function* fetchRepos() {
@@ -15,6 +15,11 @@ function* fetchRepos() {
     }));
 }
 
+function* fetchSingleRepo() {
+    console.log('SAGA')
+}
+
 export default function* rootSaga() {
     yield takeLatest(FETCH_REPOS_SAGA, fetchRepos);
+    yield takeLatest(FETCH_SINGLE_REPO_SAGA, fetchSingleRepo);
 }

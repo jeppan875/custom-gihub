@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FETCH_REPOS_SAGA } from './constants'
 import { getRepos } from './selector'
-
+import ListContainer from 'components/listContainer'
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchRepos: () => dispatch({ type: FETCH_REPOS_SAGA }),
@@ -14,6 +14,8 @@ const mapStateToProps = (state) => {
     }
 }
 
+const getRepoName = repos => repos.map(repo => repo.name)
+
 class Repos extends Component {
 
     componentDidMount() {
@@ -22,10 +24,10 @@ class Repos extends Component {
     }
     render() {
         const { repos } = this.props
-        console.log(repos)
+        const actualRepos = getRepoName(repos.repos)
         return (
             <div>
-                <p>logged in</p>
+                <ListContainer itemList={actualRepos} />
             </div>
         )
     }
