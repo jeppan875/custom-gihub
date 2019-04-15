@@ -14,6 +14,23 @@ const repos = async (req, res) => {
         });
 }
 
+const getSingleRepo = async (req, res) => {
+    const accessToken = req.session.accessToken
+    const user = req.session.user.login
+    const repo = req.query.repo
+    superagent
+        .get(`https://api.github.com/repos/${user}/${repo}`)
+        .set('Authorization', `token ${accessToken}`)
+        .set('accept', 'application/json')
+        .then(resul => {
+            console.log(resul)
+            res.send(resul)
+        }).catch(err => {
+            console.log(err)
+        });
+}
+
 module.exports = {
-    repos
+    repos,
+    getSingleRepo
 }
