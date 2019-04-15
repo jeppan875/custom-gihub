@@ -15,7 +15,8 @@ function* fetchRepos() {
     }));
 }
 
-function* fetchSingleRepo() {
+function* fetchSingleRepo({ name }) {
+    console.log(name)
     console.log('SAGA')
 }
 

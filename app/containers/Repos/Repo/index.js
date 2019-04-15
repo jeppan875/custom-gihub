@@ -4,7 +4,7 @@ import { FETCH_SINGLE_REPO_SAGA } from '../constants'
 import { getRepo } from '../selector'
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchSingleRepo: () => dispatch({ type: FETCH_SINGLE_REPO_SAGA, name }),
+        fetchSingleRepo: (name) => dispatch({ type: FETCH_SINGLE_REPO_SAGA, name }),
     }
 }
 const mapStateToProps = (state) => {
@@ -17,7 +17,8 @@ class Repo extends Component {
 
     componentDidMount() {
         const { name, fetchSingleRepo } = this.props
-        fetchSingleRepo({ name })
+        console.log(name)
+        fetchSingleRepo(name)
     }
     render() {
         const { repo } = this.props
