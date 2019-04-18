@@ -1,6 +1,5 @@
 import { GIT_AUTH_LOGIN } from '../api'
 import styled from 'styled-components'
-
 export const BigButton = styled.button`
 color: white;
 background-color: black;
@@ -24,8 +23,10 @@ export default function BigLoginButton(props) {
     const { children, ...rest } = props;
 
     return (
-        <ButtonDiv >
-            <a href={GIT_AUTH_LOGIN} ><BigButton>Login</BigButton></a>
-        </ButtonDiv >
+        <div>
+            <ButtonDiv >
+                <a href={GIT_AUTH_LOGIN} ><BigButton>Login</BigButton></a>
+            </ButtonDiv >
+        </div>
     )
 }

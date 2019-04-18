@@ -2,11 +2,18 @@ import { withRouter } from 'next/router'
 import Repo from 'containers/Repos/Repo'
 
 const Content = withRouter(props => (
-    <Repo name={props.router.query.name} />
+    <Repo name={props.name || props.router.query.name} path={props.path} />
 ))
 
-const repoPage = props => (
-    <Content />
-)
+const RepoPage = props => {
+    return (
+        <Content name={props.name} path={props.path} />
+    )
+}
 
-export default repoPage
+RepoPage.getInitialProps = ({ query }) => {
+    const { name, path } = query
+    return { name, path }
+}
+
+export default RepoPage

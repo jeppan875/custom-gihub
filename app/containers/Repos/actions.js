@@ -7,12 +7,11 @@ export const insertReposAction = ({ key, data }) => {
         key,
     })
 };
-export const insertSingleRepoAction = ({ keys, data }) => {
-    console.log(keys)
+export const insertSingleRepoAction = ({ key, data }) => {
     return ({
         type: INSERT_SINGLE_REPOS_ACTION,
         data,
-        keys,
+        key,
     })
 };
 export const resetReposAction = () => {

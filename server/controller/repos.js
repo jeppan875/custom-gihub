@@ -19,7 +19,7 @@ const getSingleRepo = async (req, res) => {
     const user = req.session.user.login
     const repo = req.query.repo
     superagent
-        .get(`https://api.github.com/repos/${user}/${repo}`)
+        .get(`https://api.github.com/repos/${user}/${repo}/contents`)
         .set('Authorization', `token ${accessToken}`)
         .set('accept', 'application/json')
         .then(resul => {
@@ -30,7 +30,24 @@ const getSingleRepo = async (req, res) => {
         });
 }
 
+const getContent = async (req, res) => {
+    const accessToken = req.session.accessToken
+    const user = req.session.user.login
+    const repo = req.query.repo
+    const path = req.query.path
+    superagent
+        .get(`https://api.github.com/repos/${user}/${repo}/contents/${path}`)
+        .set('Authorization', `token ${accessToken}`)
+        .set('accept', 'application/json')
+        .then(resul => {
+            res.send(resul)
+        }).catch(err => {
+            console.log(err)
+        });
+}
+
 module.exports = {
     repos,
-    getSingleRepo
+    getSingleRepo,
+    getContent
 }
