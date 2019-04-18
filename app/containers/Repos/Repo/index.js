@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FETCH_SINGLE_REPO_SAGA } from '../constants'
+import { FETCH_REPO_CONTENT_SAGA } from '../constants'
 import RepoNavigation from 'components/repoNavigation'
 import { getRepoLinks } from '../selector'
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchSingleRepo: (name, path) => dispatch({ type: FETCH_SINGLE_REPO_SAGA, name, path }),
+        fetchSingleRepo: (name, path) => dispatch({ type: FETCH_REPO_CONTENT_SAGA, name, path }),
     }
 }
 const mapStateToProps = (state, ownProps) => {

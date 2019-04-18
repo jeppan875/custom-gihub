@@ -3,7 +3,7 @@ export const getRepos = (state) => {
 }
 
 export const getRepoLinks = ({ state, name, path }) => {
-    let pathArr = ['single', name, 'content']
-    const slice = !path ? pathArr : ['single', name, ...path.split('/'), 'content']
-    return state.github.repos.getIn(slice)
+    let defaultKey = ['single', name, 'content']
+    const key = !path ? defaultKey : ['single', name, ...path.split('/'), 'content']
+    return state.github.repos.getIn(key)
 }

@@ -1,4 +1,4 @@
-import { INSERT_REPOS_ACTION, INSERT_SINGLE_REPOS_ACTION, RESET_REPOS_ACTION } from './constants';
+import { INSERT_REPOS_ACTION, INSERT_REPO_CONTENT_ACTION, RESET_REPOS_ACTION } from './constants';
 
 export const insertReposAction = ({ key, data }) => {
     return ({
@@ -9,7 +9,7 @@ export const insertReposAction = ({ key, data }) => {
 };
 export const insertSingleRepoAction = ({ key, data }) => {
     return ({
-        type: INSERT_SINGLE_REPOS_ACTION,
+        type: INSERT_REPO_CONTENT_ACTION,
         data,
         key,
     })
