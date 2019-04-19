@@ -1,5 +1,6 @@
 import { GIT_AUTH_LOGIN } from '../api'
 import styled from 'styled-components'
+
 export const BigButton = styled.button`
 color: white;
 background-color: black;

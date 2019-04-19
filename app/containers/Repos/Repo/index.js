@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { FETCH_REPO_CONTENT_SAGA } from '../constants'
-import { ListDiv, UlStyle, StyledLink } from 'components/repoNavigation'
+import { ListDiv, UlStyle, StyledLink, StyledLi, TopDiv } from 'components/repoNavigation'
+import IconImg from 'components/fileIcon'
 import { getRepoLinks } from '../selector'
 import Link from 'next/link'
 import { isArray } from 'util';
@@ -34,18 +35,24 @@ class Repo extends Component {
         console.log(path)
         console.log(isDir)
         return (
-            <div>
+            <TopDiv>
                 {isDir && <ListDiv>
                     <UlStyle>
                         {repoLinks.map((item, index) =>
                             <Link key={index} href={`repo?name=${name}&path=${item.path}`} passHref>
-                                <StyledLink><li onClick={() => fetchContent(name, item.path)} key={index}>{item.name}</li></StyledLink>
-                            </Link>)}
+                                <StyledLink>
+                                    <Fragment>
+                                        <IconImg src={`/static/${item.type}.png`} />
+                                        <StyledLi onClick={() => fetchContent(name, item.path)} key={index}>{item.name}</StyledLi>
+                                    </Fragment>
+                                </StyledLink>
+                            </Link>
+                        )}
                     </UlStyle>
                 </ListDiv>}
                 {isFile && <Code code={atob(repoLinks.content)} />
                 }
-            </div>
+            </TopDiv>
         )
     }
 }

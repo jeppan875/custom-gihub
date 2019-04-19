@@ -10,7 +10,6 @@ class FrontPage extends Component {
 
         return (
             <div>
-                <p>logged in</p>
                 <Repos></Repos>
             </div>
         )
