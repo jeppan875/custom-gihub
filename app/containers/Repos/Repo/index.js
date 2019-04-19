@@ -5,6 +5,7 @@ import { ListDiv, UlStyle, StyledLink } from 'components/repoNavigation'
 import { getRepoLinks } from '../selector'
 import Link from 'next/link'
 import { isArray } from 'util';
+import Code from '../Code'
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -23,6 +24,7 @@ class Repo extends Component {
         const { name, fetchContent } = this.props
         fetchContent(name, '/')
     }
+
     render() {
         const { name, repoLinks, path, fetchContent } = this.props
         const isDir = isArray(repoLinks)
@@ -41,7 +43,8 @@ class Repo extends Component {
                             </Link>)}
                     </UlStyle>
                 </ListDiv>}
-                {isFile && <p>{atob(repoLinks.content)}</p>}
+                {isFile && <Code code={atob(repoLinks.content)} />
+                }
             </div>
         )
     }
