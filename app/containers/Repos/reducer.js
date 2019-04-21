@@ -7,6 +7,8 @@ import {
     INSERT_REPO_CONTENT_ACTION
 } from './constants';
 
+// remember, that the methods get attached at state.github.repos
+// for getIn, setIn , merge etc
 const initialState = Immutable({
     repos: [],
     single: {},

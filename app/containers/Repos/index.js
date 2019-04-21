@@ -26,12 +26,12 @@ class Repos extends Component {
     }
     render() {
         const { repos } = this.props
-        const actualRepos = getRepoName(repos.repos)
+        const repoNames = getRepoName(repos)
         return (
             <div>
                 <ListDiv>
                     <UlStyle>
-                        {actualRepos.map((item, index) =>
+                        {repoNames.map((item, index) =>
                             <Link key={index} href={`repo?name=${item}`} passHref>
                                 <StyledLink><li key={index}>{item}</li></StyledLink>
                             </Link>)}
