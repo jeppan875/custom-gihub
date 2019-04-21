@@ -1,6 +1,5 @@
 import Immutable from 'seamless-immutable';
 import createReducer from '@ikhsaan/create-reducer';
-import { isEqual, uniqWith } from 'lodash';
 
 import {
     INSERT_REPOS_ACTION,

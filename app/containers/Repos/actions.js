@@ -7,7 +7,7 @@ export const insertReposAction = ({ key, data }) => {
         key,
     })
 };
-export const insertSingleRepoAction = ({ key, data }) => {
+export const insertRepoContentAction = ({ key, data }) => {
     return ({
         type: INSERT_REPO_CONTENT_ACTION,
         data,

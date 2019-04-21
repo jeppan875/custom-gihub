@@ -1,6 +1,6 @@
 
 import { takeLatest } from 'redux-saga/effects';
-import { insertReposAction, insertSingleRepoAction } from './actions';
+import { insertReposAction, insertRepoContentAction } from './actions';
 import { request } from 'utils/request';
 import { FETCH_REPOS_SAGA, FETCH_REPO_CONTENT_SAGA } from './constants';
 import { call, put } from 'redux-saga/effects';
@@ -18,12 +18,12 @@ function* fetchRepos() {
 function* fetchRepoContent({ name, path }) {
     const url = `http://localhost:3003/repos/content?repo=${name}&path=${path}`
     const response = yield call(request, url);
-    const singleRepo = yield JSON.parse(response.text)
+    const content = yield JSON.parse(response.text)
     let defaultKey = ['single', name, 'content']
     let key = path === '/' ? defaultKey : ['single', name, ...path.split('/'), 'content']
-    yield put(insertSingleRepoAction({
+    yield put(insertRepoContentAction({
         key,
-        data: singleRepo
+        data: content
     }));
 }
 

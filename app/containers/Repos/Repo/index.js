@@ -15,25 +15,30 @@ const mapDispatchToProps = (dispatch) => {
 }
 const mapStateToProps = (state, ownProps) => {
     return {
-        repoLinks: getRepoLinks({ state, name: ownProps.name, path: ownProps.path })
+        repoLinks: getRepoLinks({ state, name: ownProps.name, path: ownProps.path }),
     }
 }
 
 class Repo extends Component {
 
-    componentDidMount() {
-        const { name, fetchContent } = this.props
-        fetchContent(name, '/')
+    componentWillMount() {
+        const { name, fetchContent, path } = this.props
+        const pathL = path ? path : '/'
+        fetchContent(name, pathL)
+    }
+
+    componentDidUpdate() {
+        const { name, fetchContent, path, repoLinks } = this.props
+        if (!repoLinks) {
+            const pathL = path ? path : '/'
+            fetchContent(name, pathL)
+        }
     }
 
     render() {
-        const { name, repoLinks, path, fetchContent } = this.props
+        const { name, repoLinks, fetchContent } = this.props
         const isDir = isArray(repoLinks)
         const isFile = repoLinks && repoLinks.type === 'file'
-        console.log(name)
-        console.log(repoLinks)
-        console.log(path)
-        console.log(isDir)
         return (
             <TopDiv>
                 {isDir && <ListDiv>

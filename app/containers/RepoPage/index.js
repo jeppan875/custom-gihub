@@ -11,9 +11,9 @@ const RepoPage = props => {
     )
 }
 
-RepoPage.getInitialProps = ({ query }) => {
+RepoPage.getInitialProps = ({ query, store }) => {
     const { name, path } = query
-    return { name, path }
+    return { name, path, store }
 }
 
 export default RepoPage

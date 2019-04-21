@@ -1,11 +1,11 @@
-import frontpageSaga from './containers/Repos/saga';
+import repoSagas from './containers/Repos/saga';
 import loginSaga from './containers/Login/saga';
 import { all, fork } from 'redux-saga/effects';
 
 function* rootSaga() {
     try {
         yield all([
-            fork(frontpageSaga),
+            fork(repoSagas),
             fork(loginSaga)
         ]);
     } catch (err) {
