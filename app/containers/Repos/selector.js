@@ -1,6 +1,13 @@
+import { createSelector } from 'reselect'
+
 export const getRepos = (state) => {
     return state.github.repos.repos
 }
+
+export const getRepoNames = createSelector(
+    getRepos,
+    repos => repos.map(repo => repo.name)
+)
 
 export const getRepoContent = ({ state, name, path }) => {
     let defaultKey = ['single', name, 'content']

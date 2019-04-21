@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FETCH_REPOS_SAGA } from './constants'
-import { getRepos } from './selector'
+import { getRepoNames } from './selector'
 import { ListDiv, UlStyle, StyledLink } from 'components/listContainer'
 import Link from 'next/link'
 
@@ -12,11 +12,9 @@ const mapDispatchToProps = (dispatch) => {
 }
 const mapStateToProps = (state) => {
     return {
-        repos: getRepos(state)
+        repoNames: getRepoNames(state)
     }
 }
-
-const getRepoName = repos => repos.map(repo => repo.name)
 
 class Repos extends Component {
 
@@ -24,9 +22,9 @@ class Repos extends Component {
         const { fetchRepos } = this.props
         fetchRepos()
     }
+
     render() {
-        const { repos } = this.props
-        const repoNames = getRepoName(repos)
+        const { repoNames } = this.props
         return (
             <div>
                 <ListDiv>

@@ -37,7 +37,6 @@ class Repo extends Component {
 
     render() {
         const { name, repoContent, fetchContent } = this.props
-        console.log(repoContent)
         const isDir = isArray(repoContent)
         const isFile = repoContent && repoContent.type === 'file'
         return (
