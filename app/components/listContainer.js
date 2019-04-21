@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import Link from 'next/link'
 
 export const ListDiv = styled.div`
 background-color: #e6e9ef;
@@ -16,25 +15,8 @@ font-size: 20px;
 list-style-type: none;
 `;
 
-const StyledLink = styled.a`
+export const StyledLink = styled.a`
   color: black;
   font-weight: bold;
   text-decoration: none;
 `;
-
-function listContainer(props) {
-    const { itemList } = props;
-
-    return (
-        <ListDiv>
-            <UlStyle>
-                {itemList.map((item, index) =>
-                    <Link key={index} href={`repo?name=${item}`} passHref>
-                        <StyledLink><li key={index}>{item}</li></StyledLink>
-                    </Link>)}
-            </UlStyle>
-        </ListDiv>
-    )
-}
-
-export default listContainer

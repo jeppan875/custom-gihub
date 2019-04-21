@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FETCH_REPOS_SAGA } from './constants'
 import { getRepos } from './selector'
-import ListContainer from 'components/listContainer'
+import { ListDiv, UlStyle, StyledLink } from 'components/listContainer'
+import Link from 'next/link'
+
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchRepos: () => dispatch({ type: FETCH_REPOS_SAGA }),
@@ -27,7 +29,14 @@ class Repos extends Component {
         const actualRepos = getRepoName(repos.repos)
         return (
             <div>
-                <ListContainer itemList={actualRepos} />
+                <ListDiv>
+                    <UlStyle>
+                        {actualRepos.map((item, index) =>
+                            <Link key={index} href={`repo?name=${item}`} passHref>
+                                <StyledLink><li key={index}>{item}</li></StyledLink>
+                            </Link>)}
+                    </UlStyle>
+                </ListDiv>
             </div>
         )
     }
